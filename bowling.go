@@ -15,9 +15,9 @@ func translate(value string) int {
 		value = value[0:1]
 	}
 	if len(value) == 3 { // did not pick up the spare, e.g. 7/2
-		firstThrow := translate(value[0:1])
-		secondThrow := translate(value[2:3])
-		return firstThrow + secondThrow
+		firstTry := translate(value[0:1])
+		secondTry := translate(value[2:3])
+		return firstTry + secondTry
 	}
 	convertedNumber, _ := strconv.Atoi(value)
 	return convertedNumber

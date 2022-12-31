@@ -23,3 +23,12 @@ func TestScore_DashIsAMiss(t *testing.T) {
 		t.Errorf("expected: '%v' actual: '%v", expected, actual)
 	}
 }
+
+func TestScore_ScoreSpare(t *testing.T) {
+	line := []string{"1-", "2-"}
+	const expected int = 3
+	actual := bowling.Score(line)
+	if actual != expected {
+		t.Errorf("expected: '%v' actual: '%v", expected, actual)
+	}
+}
