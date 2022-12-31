@@ -4,7 +4,12 @@ import "strconv"
 
 func Score(frames []string) int {
 	score := 0
-	for _, turn := range frames {
+	for i, turn := range frames {
+		if turn[1:2] == "/" && len(turn) == 2 {
+			scoreNextThrow := translate(frames[i+1][0:1])
+			score += 10 + scoreNextThrow
+			continue
+		}
 		score += translate(turn)
 	}
 	return score
