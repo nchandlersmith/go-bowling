@@ -4,8 +4,8 @@ import "strconv"
 
 func Score(frames []string) int {
 	score := 0
-	for _, frame := range frames {
-		score += translate(frame)
+	for _, turn := range frames {
+		score += translate(turn)
 	}
 	return score
 }
