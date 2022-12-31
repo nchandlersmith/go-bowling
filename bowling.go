@@ -5,21 +5,20 @@ import "strconv"
 func Score(frames []string) int {
 	score := 0
 	for _, frame := range frames {
-		if len(frame) == 2 {
-			frame = frame[0:1]
-		}
-		if len(frame) == 3 {
-			firstThrow := notationToScore(frame[0:1])
-			secondThrow := notationToScore(frame[2:3])
-			score += firstThrow + secondThrow
-			continue
-		}
-		score += notationToScore(frame)
+		score += translate(frame)
 	}
 	return score
 }
 
-func notationToScore(value string) int {
+func translate(value string) int {
+	if len(value) == 2 { // second throw was a miss, e.g. 7-
+		value = value[0:1]
+	}
+	if len(value) == 3 { // did not pick up the spare, e.g. 7/2
+		firstThrow := translate(value[0:1])
+		secondThrow := translate(value[2:3])
+		return firstThrow + secondThrow
+	}
 	convertedNumber, _ := strconv.Atoi(value)
 	return convertedNumber
 }
