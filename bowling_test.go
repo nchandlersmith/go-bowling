@@ -7,8 +7,8 @@ import (
 )
 
 func TestScore_ReturnsNumberOfKnockedDownPins(t *testing.T) {
-	const expected int = 2
-	line := []string{"1", "1"}
+	line := []string{"1/6", "7/1"}
+	const expected int = 15
 	actual := bowling.Score(line)
 	if actual != expected {
 		t.Errorf("expected: '%v' actual: '%v", expected, actual)
@@ -16,8 +16,8 @@ func TestScore_ReturnsNumberOfKnockedDownPins(t *testing.T) {
 }
 
 func TestScore_DashIsAMiss(t *testing.T) {
-	const expected int = 3
 	line := []string{"1-", "2-"}
+	const expected int = 3
 	actual := bowling.Score(line)
 	if actual != expected {
 		t.Errorf("expected: '%v' actual: '%v", expected, actual)

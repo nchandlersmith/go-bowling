@@ -8,6 +8,12 @@ func Score(frames []string) int {
 		if len(frame) == 2 {
 			frame = frame[0:1]
 		}
+		if len(frame) == 3 {
+			firstThrow, _ := strconv.Atoi(frame[0:1])
+			secondThrow, _ := strconv.Atoi(frame[2:3])
+			score += firstThrow + secondThrow
+			continue
+		}
 		frameScore, _ := strconv.Atoi(frame)
 		score += frameScore
 	}
