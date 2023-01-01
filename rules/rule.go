@@ -2,23 +2,23 @@ package rules
 
 import "strconv"
 
-type rule interface {
+type Rule interface {
 	DoesApply(turn string) bool
-	Apply(score int, index int, frames []string) int
+	Apply(index int, frames []string) int
 }
 
-func Translate(value string) int {
-	if len(value) == 2 { // second throw was a miss, e.g. 7-
-		value = value[0:1]
+func CountPins(turn string) int {
+	if len(turn) == 2 && turn[1] == '-' { // second throw was a miss, e.g. 7-
+		turn = turn[0:1]
 	}
-	if len(value) == 3 { // did not pick up the spare, e.g. 7/2
-		firstTry := Translate(value[0:1])
-		secondTry := Translate(value[2:3])
+	if len(turn) == 3 { // did not pick up the spare, e.g. 7/2
+		firstTry := CountPins(turn[0:1])
+		secondTry := CountPins(turn[2:3])
 		return firstTry + secondTry
 	}
-	if "x" == value {
+	if "x" == turn {
 		return 10
 	}
-	convertedNumber, _ := strconv.Atoi(value)
+	convertedNumber, _ := strconv.Atoi(turn)
 	return convertedNumber
 }

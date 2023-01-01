@@ -3,11 +3,10 @@ package rules
 type SpareRule struct{}
 
 func (sr SpareRule) DoesApply(turn string) bool {
-	return turn[1:2] == "/" && len(turn) == 2
+	return len(turn) == 2 && turn[1:2] == "/"
 }
 
-func (sr SpareRule) Apply(score int, index int, frames []string) int {
-	scoreNextThrow := Translate(frames[index+1][0:1])
-	score += 10 + scoreNextThrow
-	return score
+func (sr SpareRule) Apply(index int, frames []string) int {
+	scoreNextThrow := CountPins(frames[index+1][0:1])
+	return 10 + scoreNextThrow
 }
