@@ -10,7 +10,7 @@ func Score(frames []string) int {
 		rules.NotSpare{},
 		rules.SpareRule{},
 		rules.StrikeRule{},
-		rules.GutterBall{}}
+		rules.Miss{}}
 
 	for i, turn := range frames {
 		if isExtraTurn(i) {

@@ -39,7 +39,7 @@ func TestScore(t *testing.T) {
 		},
 		{
 			name: "10 turns of 9 and a miss",
-			line: []string{"9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-"},
+			line: []string{"9-", "-9", "-9", "9-", "9-", "9-", "9-", "9-", "9-", "9-"},
 			want: 90,
 		},
 		{
