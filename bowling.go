@@ -12,7 +12,7 @@ func Score(frames []string) int {
 	bowlingRules := []rules.Rule{strikeRule, spareRule, countRule}
 	for i, turn := range frames {
 		if isExtraTurn(i) {
-			continue
+			break
 		}
 		for _, rule := range bowlingRules {
 			if rule.DoesApply(turn) {
