@@ -13,7 +13,7 @@ func TestScore(t *testing.T) {
 		want int
 	}{
 		{
-			name: "Returns number of knocked down pines",
+			name: "Returns number of knocked down pins",
 			line: []string{"1/6", "7/1"},
 			want: 15,
 		},
