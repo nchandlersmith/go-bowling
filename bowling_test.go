@@ -59,3 +59,12 @@ func TestScore_10TurnsOf9AndMiss(t *testing.T) {
 		t.Errorf("expected: '%v' actual '%v'", expected, actual)
 	}
 }
+
+func TestScore_10TurnsOf5AndSparePlus5(t *testing.T) {
+	line := []string{"5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5"}
+	const expected = 150
+	actual := bowling.Score(line)
+	if actual != expected {
+		t.Errorf("expected: '%v' actual '%v'", expected, actual)
+	}
+}
