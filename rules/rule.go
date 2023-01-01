@@ -7,18 +7,14 @@ type Rule interface {
 	Apply(index int, frames []string) int
 }
 
-func CountPins(turn string) int {
-	if len(turn) == 2 && turn[1] == '-' { // second throw was a miss, e.g. 7-
-		turn = turn[0:1]
-	}
-	if len(turn) == 3 { // did not pick up the spare, e.g. 7/2
-		firstTry := CountPins(turn[0:1])
-		secondTry := CountPins(turn[2:3])
-		return firstTry + secondTry
-	}
-	if "x" == turn {
+func CountThrow(throw string) int {
+	if isStrike(throw) {
 		return 10
 	}
-	convertedNumber, _ := strconv.Atoi(turn)
+	convertedNumber, _ := strconv.Atoi(throw)
 	return convertedNumber
+}
+
+func isStrike(turn string) bool {
+	return "x" == turn
 }

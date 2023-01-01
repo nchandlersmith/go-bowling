@@ -6,10 +6,12 @@ import (
 
 func Score(frames []string) int {
 	score := 0
-	strikeRule := rules.StrikeRule{}
-	spareRule := rules.SpareRule{}
-	countRule := rules.CountRule{}
-	bowlingRules := []rules.Rule{strikeRule, spareRule, countRule}
+	bowlingRules := []rules.Rule{
+		rules.NotSpare{},
+		rules.SpareRule{},
+		rules.StrikeRule{},
+		rules.GutterBall{}}
+
 	for i, turn := range frames {
 		if isExtraTurn(i) {
 			break

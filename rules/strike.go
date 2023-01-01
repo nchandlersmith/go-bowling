@@ -14,8 +14,8 @@ func (sr StrikeRule) Apply(i int, frames []string) int {
 	} else {
 		throwAfterNext = frames[i+1][1:2]
 	}
-	scoreNextThrow := CountPins(nextThrow)
-	scoreThrowAfterNext := CountPins(throwAfterNext)
+	scoreNextThrow := CountThrow(nextThrow)
+	scoreThrowAfterNext := CountThrow(throwAfterNext)
 	return 10 + scoreNextThrow + scoreThrowAfterNext
 
 }
