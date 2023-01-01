@@ -5,9 +5,19 @@ import "strconv"
 func Score(frames []string) int {
 	score := 0
 	for i, turn := range frames {
+		if i > 9 {
+			continue
+		}
 		if turn == "x" {
-			scoreNextThrow := translate(frames[i+1][0:1])
-			scoreThrowAfterNext := translate(frames[i+1][1:2])
+			nextThrow := frames[i+1][0:1]
+			var throwAfterNext string
+			if len(frames[i+1]) == 1 {
+				throwAfterNext = frames[i+2][0:1]
+			} else {
+				throwAfterNext = frames[i+1][1:2]
+			}
+			scoreNextThrow := translate(nextThrow)
+			scoreThrowAfterNext := translate(throwAfterNext)
 			score += 10 + scoreNextThrow + scoreThrowAfterNext
 			continue
 		}
@@ -29,6 +39,9 @@ func translate(value string) int {
 		firstTry := translate(value[0:1])
 		secondTry := translate(value[2:3])
 		return firstTry + secondTry
+	}
+	if "x" == value {
+		return 10
 	}
 	convertedNumber, _ := strconv.Atoi(value)
 	return convertedNumber

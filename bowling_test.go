@@ -41,3 +41,12 @@ func TestScore_ScoreStrike(t *testing.T) {
 		t.Errorf("expected: '%v' actual '%v'", expected, actual)
 	}
 }
+
+func TestScore_PerfectGame(t *testing.T) {
+	line := []string{"x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"}
+	const expected int = 300
+	actual := bowling.Score(line)
+	if actual != expected {
+		t.Errorf("expected: '%v' actual '%v'", expected, actual)
+	}
+}
