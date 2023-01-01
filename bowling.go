@@ -5,6 +5,12 @@ import "strconv"
 func Score(frames []string) int {
 	score := 0
 	for i, turn := range frames {
+		if turn == "x" {
+			scoreNextThrow := translate(frames[i+1][0:1])
+			scoreThrowAfterNext := translate(frames[i+1][1:2])
+			score += 10 + scoreNextThrow + scoreThrowAfterNext
+			continue
+		}
 		if turn[1:2] == "/" && len(turn) == 2 {
 			scoreNextThrow := translate(frames[i+1][0:1])
 			score += 10 + scoreNextThrow

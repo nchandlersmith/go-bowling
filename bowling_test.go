@@ -32,3 +32,12 @@ func TestScore_ScoreSpare(t *testing.T) {
 		t.Errorf("expected: '%v' actual: '%v", expected, actual)
 	}
 }
+
+func TestScore_ScoreStrike(t *testing.T) {
+	line := []string{"x", "7/1"}
+	const expected int = 25
+	actual := bowling.Score(line)
+	if actual != expected {
+		t.Errorf("expected: '%v' actual '%v'", expected, actual)
+	}
+}
